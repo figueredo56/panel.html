@@ -34,10 +34,10 @@
         .decor-img {
             border: 2px solid #00ffff;
             border-radius: 10px;
-            object-fit: cover;
+            object-fit: contain; /* Para que la imagen se vea completa sin cortes */
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
-        /* Contenedor de órdenes con la nueva imagen translúcida de fondo */
         .orders-box {
             background: linear-gradient(rgba(10, 10, 25, 0.82), rgba(10, 10, 25, 0.82)), url('https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/188%20sin%20t%C3%ADtulo_20260720001344.png');
             background-size: cover;
@@ -51,7 +51,7 @@
         
         <!-- Cabecera -->
         <header class="text-center mb-3 flex flex-col items-center">
-            <img src="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/184%20sin%20t%C3%ADtulo_20260715225022.png" alt="Emblema ZAARD & PANGA" class="decor-img w-16 h-16 md:w-20 md:h-20 mb-2">
+            <img src="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/184%20sin%20t%C3%ADtulo_20260715225022.png" alt="Emblema ZAARD & PANGA" class="decor-img w-16 h-16 md:w-20 md:h-20 mb-2 p-1">
             <h1 class="text-2xl md:text-4xl font-bold glow-text uppercase tracking-wider">ZAARD INNOVATION</h1>
             <p class="text-xs md:text-sm text-cyan-200">Monitoreo Técnico On-Chain - Protocolo Panga</p>
         </header>
@@ -71,11 +71,11 @@
                 </div>
             </div>
 
-            <!-- Panel Lateral -->
+            <!-- Panel Lateral con la nueva imagen completa -->
             <div class="flex flex-col gap-2">
                 
-                <div class="h-24 w-full overflow-hidden rounded-xl border border-cyan-500/50 relative">
-                    <img src="CC_20260430_215529.png" alt="Detalle" class="w-full h-full decor-img">
+                <div class="h-32 w-full overflow-hidden rounded-xl border border-cyan-500/50 relative flex items-center justify-center bg-black/50">
+                    <img src="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/188%20sin%20t%C3%ADtulo_20260720001344.png" alt="Detalle Completo" class="w-full h-full decor-img">
                 </div>
 
                 <div class="border border-cyan-500/50 rounded-xl p-2.5 bg-black/70 text-xs">
