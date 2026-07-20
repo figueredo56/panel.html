@@ -26,37 +26,58 @@
             padding: 4px 10px;
         }
 
-        /* Animación envolvente que cambia el borde entre Azul y Morado */
-        @keyframes borderGlow {
+        /* Animación de bordes: Azul -> Verde -> Morado */
+        @keyframes triColorGlow {
             0% {
                 border-color: #00ffff;
-                box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(0, 255, 255, 0.2);
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), inset 0 0 15px rgba(0, 255, 255, 0.2);
             }
-            50% {
+            33% {
+                border-color: #22c55e;
+                box-shadow: 0 0 25px rgba(34, 197, 94, 0.6), inset 0 0 15px rgba(34, 197, 94, 0.2);
+            }
+            66% {
                 border-color: #a855f7;
-                box-shadow: 0 0 35px rgba(168, 85, 247, 0.7), inset 0 0 25px rgba(168, 85, 247, 0.4);
+                box-shadow: 0 0 30px rgba(168, 85, 247, 0.7), inset 0 0 20px rgba(168, 85, 247, 0.3);
             }
             100% {
                 border-color: #00ffff;
-                box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(0, 255, 255, 0.2);
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), inset 0 0 15px rgba(0, 255, 255, 0.2);
             }
         }
 
         .frame-gold {
             border: 2px solid #00ffff;
             border-radius: 16px;
-            background: rgba(10, 10, 25, 0.8);
+            background: rgba(10, 10, 25, 0.85);
             backdrop-filter: blur(12px);
-            animation: borderGlow 4s infinite ease-in-out;
+            animation: triColorGlow 5s infinite ease-in-out;
         }
 
-        .glow-text {
-            text-shadow: 0 0 12px #00ffff;
-            color: #00ffff;
+        .glow-player {
+            border: 2px solid #00ffff;
+            animation: triColorGlow 4s infinite ease-in-out;
+        }
+
+        /* Títulos con degradado Azul y Morado */
+        .title-gradient {
+            background: linear-gradient(135deg, #00ffff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+        }
+
+        /* Fondo espacial morado y azul para la tarjeta del medio */
+        .space-card-bg {
+            background: radial-gradient(circle at center, #2e0854 0%, #0d001a 70%, #001f3f 100%);
+        }
+
+        .info-card-bg {
+            background: linear-gradient(135deg, rgba(30, 0, 51, 0.9) 0%, rgba(10, 10, 25, 0.95) 100%);
         }
 
         .orders-box {
-            background: linear-gradient(rgba(10, 10, 25, 0.82), rgba(10, 10, 25, 0.82)), url('https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/184%20sin%20t%C3%ADtulo_20260715225022.png');
+            background: linear-gradient(rgba(10, 10, 25, 0.85), rgba(10, 10, 25, 0.85)), url('https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/184%20sin%20t%C3%ADtulo_20260715225022.png');
             background-size: cover;
             background-position: center;
         }
@@ -64,8 +85,8 @@
 </head>
 <body class="flex items-center justify-center min-h-screen">
 
-    <!-- Reproductor de la canción de ZARD (Autoplay integrado) -->
-    <div class="fixed bottom-3 right-3 z-50 bg-black/90 border border-cyan-400 p-2 rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.4)] flex items-center gap-2">
+    <!-- Reproductor de música con borde titulante tricolor -->
+    <div class="fixed bottom-3 right-3 z-50 bg-black/95 glow-player p-2 rounded-xl shadow-2xl flex items-center gap-2">
         <span class="text-[10px] text-cyan-300 font-semibold uppercase tracking-wider hidden md:inline">🎶 El Chupulún de Zaard</span>
         <audio id="zaard-audio" controls autoplay loop class="h-8 w-36 md:w-44 accent-cyan-400">
             <source src="El Chupulún de Zaard.mp3" type="audio/mpeg">
@@ -78,7 +99,7 @@
         <!-- Cabecera -->
         <header class="text-center mb-3 flex flex-col items-center">
             <img src="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/184%20sin%20t%C3%ADtulo_20260715225022.png" alt="Emblema ZAARD & PANGA" class="w-16 h-16 md:w-20 md:h-20 mb-2 p-1 border-2 border-cyan-400 rounded-xl object-cover shadow-[0_0_10px_rgba(0,255,255,0.5)]">
-            <h1 class="text-2xl md:text-4xl font-bold glow-text uppercase tracking-wider">ZAARD TRACKER</h1>
+            <h1 class="text-2xl md:text-4xl font-bold title-gradient uppercase tracking-wider">ZAARD TRACKER</h1>
             <p class="text-xs md:text-sm text-cyan-200">Monitoreo Técnico On-Chain - Protocolo Panga</p>
         </header>
 
@@ -97,32 +118,33 @@
                 </div>
             </div>
 
-            <!-- Panel Lateral con la imagen solicitada -->
+            <!-- Panel Lateral con enlace al token y fondo espacial -->
             <div class="flex flex-col gap-2">
                 
-                <div class="w-full h-36 rounded-xl border border-cyan-500/50 relative shadow-lg overflow-hidden bg-black flex items-center justify-center p-1">
-                    <img src="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/184%20sin%20t%C3%ADtulo_20260715225022.png" alt="Protocolo Panga" class="w-full h-full object-contain">
-                </div>
+                <a href="https://app.binance.com/uni-qr/web3-token-details?utm_medium=share&tokenCA=0x3468ea4e6ce13ec4c7f8651f7efc6aa6046f4d65&binanceChainId=56&chain=bsc" target="_blank" class="w-full h-36 rounded-xl border border-purple-500/60 relative shadow-lg overflow-hidden space-card-bg flex flex-col items-center justify-center p-1 group hover:border-cyan-400 transition-all duration-300">
+                    <img src="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/184%20sin%20t%C3%ADtulo_20260715225022.png" alt="Protocolo Panga" class="w-20 h-20 object-contain group-hover:scale-105 transition-transform duration-300">
+                    <span class="absolute bottom-2 bg-black/80 border border-cyan-400/80 text-cyan-300 text-[10px] font-bold px-3 py-0.5 rounded-full shadow-[0_0_10px_rgba(0,255,255,0.4)] group-hover:bg-cyan-500 group-hover:text-black transition-all">Ir al token 🚀</span>
+                </a>
 
-                <div class="border border-cyan-500/50 rounded-xl p-2.5 bg-black/70 text-xs">
+                <div class="border border-purple-500/40 rounded-xl p-2.5 info-card-bg text-xs shadow-md">
                     <p class="text-gray-300">Dueño: <span class="text-white font-semibold">Panga</span></p>
-                    <p class="text-gray-300 mt-0.5">Red: <span class="text-cyan-300 font-semibold">BSC</span></p>
-                    <p class="text-green-400 mt-1 font-semibold">⚡ Pool V2 Activo</p>
+                    <p class="text-gray-300 mt-0.5">Red: <span class="text-cyan-300 font-semibold">BSC (V2)</span></p>
+                    <p class="text-green-400 mt-1 font-semibold">⚡ Pool PancakeSwap Activo</p>
                 </div>
 
             </div>
 
         </div>
 
-        <!-- Sección Inferior: Órdenes de Compra y Venta en Tiempo Real -->
+        <!-- Sección Inferior: Órdenes de Compra y Venta (Swap Stream corregido) -->
         <div class="mt-3 border border-cyan-500/50 rounded-xl p-3 orders-box">
             <div class="flex justify-between items-center border-b border-cyan-500/30 pb-1 mb-2">
                 <h3 class="text-cyan-400 font-bold text-xs uppercase tracking-wide">Órdenes de Compra y Venta (Swap Stream)</h3>
                 <span class="text-[10px] text-green-400 animate-pulse font-semibold">● En Vivo</span>
             </div>
             
-            <div class="w-full h-[150px] rounded-lg overflow-hidden border border-cyan-500/30 relative">
-                <iframe src="https://dexscreener.com/bsc/0x7084d8562532aea9f9239cdd63ea289c85e6b0e9?embed=1&theme=dark&trades=1&info=0&chartLeft=0" width="100%" height="100%" style="border:0;"></iframe>
+            <div class="w-full h-[180px] rounded-lg overflow-hidden border border-cyan-500/30 relative bg-black/60">
+                <iframe src="https://dexscreener.com/bsc/0x7084d8562532aea9f9239cdd63ea289c85e6b0e9?embed=1&theme=dark&trades=1&info=0" width="100%" height="100%" style="border:0;"></iframe>
             </div>
         </div>
 
@@ -131,11 +153,10 @@
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const audio = document.getElementById('zaard-audio');
-            audio.volume = 0.3; // Volumen moderado para que suene agradable de fondo
+            audio.volume = 0.3;
             
-            // Forzar reproducción automática superando políticas de algunos navegadores
             audio.play().catch(error => {
-                console.log("Autoplay bloqueado por el navegador, esperando interacción:", error);
+                console.log("Autoplay bloqueado, esperando interacción del usuario:", error);
                 document.body.addEventListener('click', () => {
                     audio.play();
                 }, { once: true });
