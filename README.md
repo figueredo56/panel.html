@@ -22,7 +22,16 @@ Los mercados cripto operan bajo leyes implacables de oferta, demanda y especulac
 
 ---
 
-## 🧬 3. El Efecto ZARD: Cómo Influye e Interactúa Directamente con Panga y los NFT
+## ⚙️ 3. Motor Autónomo: ¿Cómo Extrae y Procesa la Información en Tiempo Real?
+
+Para aquellos que investigan la infraestructura y preguntan de dónde proviene la data del sistema, el rastreador opera mediante un núcleo de sincronización autónomo y directo on-chain:
+* **Lectura Directa de Bloques (BSC):** El sistema procesa de forma continua los bloques generados en la Binance Smart Chain, capturando cada interacción al instante.
+* **Smart Contracts y Pools (AMM / PancakeSwap):** La información de precios, reservas de liquidez y variaciones se extrae consultando directamente los contratos inteligentes. Si entra o sale capital, las reservas cambian y el sistema recalcula los valores de forma automática.
+* **Actualización Gráfica y de Velas (OHLC):** El motor toma las transacciones recientes para estructurar los precios de apertura, máximo, mínimo y cierre, dibujando las velas y actualizando el historial de compras verdes y ventas rojas sin intervención manual.
+
+---
+
+## 🧬 4. El Efecto ZARD: Cómo Influye e Interactúa Directamente con Panga y los NFT
 
 La integración del token **ZARD** dentro de la arquitectura de ZAARD INNOVATION desata un efecto dominó brutal sobre todo el ecosistema, alterando las reglas del juego para Panga y los activos digitales:
 
@@ -32,7 +41,7 @@ La integración del token **ZARD** dentro de la arquitectura de ZAARD INNOVATION
 
 ---
 
-## 🛡️ 4. Especificaciones Técnicas y de Arquitectura
+## 🛡️ 5. Especificaciones Técnicas y de Arquitectura
 
 * **Propietario y Fundador:** Panga 
 * **Red Blockchain:** Binance Smart Chain (BSC)
@@ -41,7 +50,7 @@ La integración del token **ZARD** dentro de la arquitectura de ZAARD INNOVATION
 
 ---
 
-## 🌐 5. Canales Oficiales y Presencia Digital
+## 🌐 6. Canales Oficiales y Presencia Digital
 
 Mantente conectado de manera directa con las fuentes inalterables del protocolo:
 
@@ -51,9 +60,9 @@ Mantente conectado de manera directa con las fuentes inalterables del protocolo:
 
 ---
 
-## 👑 6. Autoría y Gobernanza
+## 👑 7. Autoría y Gobernanza
 
-* **Desarrollado, dirigido y blindado por:** Aracelis (Panga) - Fundador y Lead Developer de ZAARD INNOVATION.
+* **Desarrollado, dirigido y blindado por:** Panga - Fundador y Lead Developer de ZAARD INNOVATION.
 * **Licenciamiento:** MIT Open Source Protocol.
 
 ---
