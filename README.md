@@ -45,7 +45,7 @@ La integración del token **ZARD** dentro de la arquitectura de ZAARD INNOVATION
 
 * **Propietario y Fundador:** Panga 
 * **Red Blockchain:** Binance Smart Chain (BSC)
-* **Ecosistema Matriz:** ZAARD INNOVATION (ZAARD, PANGA, ZAIRD, ZRD)
+* **Ecosistema Matriz:** ZAARD INNOVATION (ZAARD, PANGA)
 * **Infometría del Panel:** Interfaz de alto rendimiento desarrollada bajo estándares de vanguardia, conectada a nodos de lectura en tiempo real para análisis de velas, volumen, concurrencia y presión de compra/venta.
 
 ---
