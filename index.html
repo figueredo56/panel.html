@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZAARD TRACKER | Protocolo Panga</title>
     
-    <!-- Metaetiquetas Open Graph para que al compartir en WhatsApp/Telegram salga la imagen y título -->
+    <!-- Metaetiquetas Open Graph -->
     <meta property="og:title" content="ZAARD TRACKER">
     <meta property="og:description" content="Monitoreo Técnico On-Chain - Protocolo Panga">
     <meta property="og:image" content="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/184%20sin%20t%C3%ADtulo_20260715225022.png">
@@ -39,15 +39,6 @@
             color: #00ffff;
         }
 
-        .decor-img {
-            border: 2px solid #00ffff;
-            border-radius: 10px;
-            object-fit: cover;
-            object-position: center center;
-            width: 100%;
-            height: 100%;
-        }
-
         .orders-box {
             background: linear-gradient(rgba(10, 10, 25, 0.82), rgba(10, 10, 25, 0.82)), url('https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/188%20sin%20t%C3%ADtulo_20260720001344.png');
             background-size: cover;
@@ -61,7 +52,7 @@
         
         <!-- Cabecera -->
         <header class="text-center mb-3 flex flex-col items-center">
-            <img src="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/184%20sin%20t%C3%ADtulo_20260715225022.png" alt="Emblema ZAARD & PANGA" class="decor-img w-16 h-16 md:w-20 md:h-20 mb-2 p-1" style="object-fit: cover;">
+            <img src="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/184%20sin%20t%C3%ADtulo_20260715225022.png" alt="Emblema ZAARD & PANGA" class="w-16 h-16 md:w-20 md:h-20 mb-2 p-1 border-2 border-cyan-400 rounded-xl object-cover shadow-[0_0_10px_rgba(0,255,255,0.5)]">
             <h1 class="text-2xl md:text-4xl font-bold glow-text uppercase tracking-wider">ZAARD TRACKER</h1>
             <p class="text-xs md:text-sm text-cyan-200">Monitoreo Técnico On-Chain - Protocolo Panga</p>
         </header>
@@ -81,11 +72,11 @@
                 </div>
             </div>
 
-            <!-- Panel Lateral con la imagen ya arreglada y visible -->
+            <!-- Panel Lateral con la imagen visible y ajustada -->
             <div class="flex flex-col gap-2">
                 
-                <div class="h-32 w-full overflow-hidden rounded-xl border border-cyan-500/50 relative shadow-lg bg-black">
-                    <img src="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/188%20sin%20t%C3%ADtulo_20260720001344.png" alt="Protocolo Panga" class="decor-img">
+                <div class="w-full h-32 overflow-hidden rounded-xl border border-cyan-500/50 relative shadow-lg bg-black flex items-center justify-center">
+                    <img src="https://raw.githubusercontent.com/figueredo56/zaard-tracker/refs/heads/main/188%20sin%20t%C3%ADtulo_20260720001344.png" alt="Protocolo Panga" class="w-full h-full object-cover">
                 </div>
 
                 <div class="border border-cyan-500/50 rounded-xl p-2.5 bg-black/70 text-xs">
@@ -113,13 +104,42 @@
     </div>
 
     <script>
-        // Sonido sutil tipo moneda que se reproduce al primer toque o interacción en la página
-        const coinSound = new Audio('https://www.myinstants.com/media/sounds/smw_coin.mp3');
-        coinSound.volume = 0.2; // Volumen bajito y agradable
+        // Generador de Sonido "Tin-Tin" limpio mediante Web Audio API (Sin depender de archivos externos caídos)
+        function playCoinSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                
+                const playTone = (freq, startTime, duration) => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.value = freq;
+                    
+                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime + startTime); // Volumen bajito y agradable
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + startTime + duration);
+                    
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    
+                    osc.start(audioCtx.currentTime + startTime);
+                    osc.stop(audioCtx.currentTime + startTime + duration);
+                };
 
-        document.addEventListener('click', function playOnce() {
-            coinSound.play().catch(e => console.log("Audio waiting"));
-            document.removeEventListener('click', playOnce);
+                // Notas estilo "tin-tin" clásico de moneda
+                playTone(987.77, 0, 0.08);    // B5
+                playTone(1318.51, 0.08, 0.25); // E6
+            } catch(e) {
+                console.log("Audio contextual activo");
+            }
+        }
+
+        // Se reproduce suavemente al primer toque en la pantalla
+        document.addEventListener('click', function initAudio() {
+            playCoinSound();
+            document.removeEventListener('click', initAudio);
         }, { once: true });
 
         const ZARD_CONTRACT = "0x3468ea4e6ce13ec4c7f8651f7efc6aa6046f4d65";
